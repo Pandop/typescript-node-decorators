@@ -1,0 +1,59 @@
+import 'reflect-metadata';
+import { router } from './LoginRoute';
+
+@controller
+class Plane {
+    // @markedFunction("color property")
+    private color: string = 'red';
+
+    @get("/login")
+    public fly(): void {
+        console.log("rrrrrrrrrrrrr");
+    }
+}
+
+function markFunction(target: Plane, key: string, desc: PropertyDescriptor) {
+    Reflect.defineMetadata('secret', 123, target, key);
+}
+
+// Decorator factory
+function get(path: string) {
+    return (target: Plane, key: string) => {
+        Reflect.defineMetadata('path', path, target, key);
+    }
+}
+
+// Decorator on class to loop through all metadata
+function controller(target: typeof Plane) {
+    for (let key in target.prototype) {
+        const path = Reflect.getMetadata('path', target.prototype, key);
+        const middleware = Reflect.getMetadata('path', target.prototype, key);
+        // router.get(path, middleware, target.prototype[key]);
+        console.log("secret: ", path);
+    }
+}
+
+
+//const secret = Reflect.getMetadata('secret', Plane.prototype, 'fly');
+//console.log("secret: ", secret);
+
+// const plane = {
+//     color: 'red'
+// };
+
+// // Add some metadata
+// Reflect.defineMetadata('note', 'hi there', plane);
+// Reflect.defineMetadata('height', 10, plane);
+
+// // Retrieve metadata
+// const note = Reflect.getMetadata('note', plane);
+// const height = Reflect.getMetadata('height', plane);
+
+// // Displane
+// console.log("Note: ", note);
+// console.log("Height: ", height);
+
+// // Attach metadata info to property i.e. color
+// Reflect.defineMetadata('note', 'hi there!', plane, 'color');
+// const color = Reflect.getMetadata('note', plane, 'color');
+// console.log("noteColor: ", color);

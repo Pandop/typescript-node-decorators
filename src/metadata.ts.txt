@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { router } from './LoginRoute';
 
+// Decorators are called when a class is declared, not when it's instantiated.
 @controller
 class Plane {
     // @markedFunction("color property")

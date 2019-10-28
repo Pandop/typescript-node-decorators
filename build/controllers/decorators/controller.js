@@ -22,7 +22,7 @@ function bodyValidator(keys) {
         for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
             var k = keys_1[_i];
             if (!req.body[k]) {
-                return res.status(422).send("Missing Property " + k);
+                return res.status(422).send("\n\t\t\t\t\t<div style=\"max-width:30rem; background: #fefefe; margin: 2rem auto; padding: 2rem; border: 1px solid #e74c3c; text-align: center; \">\n\t\t\t\t\t\t<h5 style=\"color: red;\" >Missing Property " + k + "</h5>\t\t\n\t\t\t\t\t\t<div style=\"\">\n\t\t\t\t\t\t\t<a href=\"/auth/login\">Login</a>\n\t\t\t\t\t\t</div>\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t");
             }
         }
         // Keys exist, run next middleware
@@ -30,7 +30,7 @@ function bodyValidator(keys) {
     };
 }
 function controller(routePrefix) {
-    if (routePrefix === void 0) { routePrefix = '/'; }
+    if (routePrefix === void 0) { routePrefix = ''; }
     return function (target) {
         // Get router from singleton
         var router = AppRouter_1.AppRouter.getInstance();

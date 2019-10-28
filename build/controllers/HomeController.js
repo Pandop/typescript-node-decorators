@@ -14,17 +14,17 @@ function authenticated(req, res, next) {
     if (req.session && req.session.loggedIn) {
         return next();
     }
-    res.status(403).send("\n\t\t<div style=\"width: 28rem; display: flex; justify-content: center\">\n\t\t\t<div style=\"color: red; background: #efefef; width: 12rem; margin-left: 10px; text-align: center;\">\n\t\t\t\t<h5>Not permitted</h5>\n\t\t\t</div>\n\t\t\t<div style=\"width: 16rem; background: #efefef;padding-top: 10px;\">\n\t\t\t\t<div>You must log in</div>\n\t\t\t\t<a href=\"/auth/login\">Login</a>\n\t\t\t</div>\n\t\t</div>\t\n\t");
+    res.status(403).send("\n\t\t<div style=\"display: flex;max-width:30rem; background: #fefefe; margin: 2rem auto; padding: 2rem; border: 1px solid #e74c3c; \">\n\t\t\t<div style=\"color: red; background: #efefef; width: 12rem; margin-left: 10px; text-align: center;\">\n\t\t\t\t<h5>Not permitted</h5>\n\t\t\t</div>\n\t\t\t<div style=\"width: 16rem; background: #efefef;padding-top: 10px;\">\n\t\t\t\t<div>You must log in</div>\n\t\t\t\t<a href=\"/auth/login\">Login</a>\n\t\t\t</div>\n\t\t</div>\t\n\t");
 }
 var HomeController = /** @class */ (function () {
     function HomeController() {
     }
     HomeController.prototype.index = function (req, res) {
         if (req.session && req.session.loggedIn) {
-            res.status(200).send("\n\t\t\t<div>\n\t\t\t\t<div>You're logged in</div>\n\t\t\t\t<a href=\"/auth/logout\">Logout</a>\n\t\t\t</div>\n\t\t");
+            res.status(200).send("\n\t\t\t<div style=\"max-width:30rem; background: #fefefe; margin: 2rem auto; padding: 2rem; border: 1px solid #e74c3c; text-align: center; \">\n\t\t\t\t<div>You're logged in</div> \n\t\t\t\t<a href=\"/auth/logout\" style=\"display: block;\">Logout</a>\n\t\t\t</div>\n\t\t");
             return;
         }
-        res.send("\n\t\t\t<div>\n\t\t\t\t<div>You're not logged in</div>\n\t\t\t\t<a href=\"/auth/login\">Login</a>\n\t\t\t</div>\n\t\t\t");
+        res.send("\n\t\t\t<div style=\"max-width:30rem; background: #fefefe; margin: 2rem auto; padding: 2rem; border: 1px solid #e74c3c; text-align: center; \">\n\t\t\t\t<div>You're not logged in</div>\n\t\t\t\t<a href=\"/auth/login\" style=\"display: block;\">Login</a>\n\t\t\t</div>\n\t\t\t");
     };
     ;
     HomeController.prototype.protectedResource = function (req, res) {

@@ -18,7 +18,14 @@ function bodyValidator(keys: string[]): RequestHandler {
 		// keys do not exist in request body
 		for (let k of keys) {
 			if (!req.body[k]) {
-				return res.status(422).send(`Missing Property ${k}`);
+				return res.status(422).send(`
+					<div style="max-width:30rem; background: #fefefe; margin: 2rem auto; padding: 2rem; border: 1px solid #e74c3c; text-align: center; ">
+						<h5 style="color: red;" >Missing Property ${k}</h5>		
+						<div style="">
+							<a href="/auth/login">Login</a>
+						</div>			
+					</div>
+				`);
 			}
 		}
 		// Keys exist, run next middleware
@@ -26,7 +33,7 @@ function bodyValidator(keys: string[]): RequestHandler {
 	}
 }
 
-export function controller(routePrefix: string = '/') {
+export function controller(routePrefix: string = ''): ClassDecorator {
 	return (target: Function) => {
 
 		// Get router from singleton

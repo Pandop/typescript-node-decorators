@@ -18,7 +18,7 @@ var LoginController = /** @class */ (function () {
     function LoginController() {
     }
     LoginController.prototype.getLogin = function (req, res) {
-        res.status(200).send("\n\t\t\t<form method=\"POST\">\n\t\t\t\t<div>\n\t\t\t\t\t<label>Email</label>\n\t\t\t\t\t<input name=\"email\" type=\"email\" />\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<label>Password</label>\n\t\t\t\t\t<input name=\"password\" type=\"password\" />\n\t\t\t\t</div>\n\t\t\t\t<button>Submit</button>\n\t\t\t</form>\n\t\t");
+        res.status(200).send("\n            <div style=\"max-width:50rem; background: #fefefe; margin: 2rem auto; padding: 2rem; border: 1px solid dodgerBlue; \">\n                <form method=\"POST\">\n                    <div style=\"width: 100%;\">\n                        <label style=\"display: block\">Email</label>\n                        <input name=\"email\" type=\"email\" style=\"width: 100%; margin-bottom: .5rem; padding: 10px\"/>\n                    </div>\n                    <div>\n                        <label style=\"display: block\">Password</label>\n                        <input name=\"password\" type=\"password\" style=\"width: 100%; margin-bottom: .5rem; padding: 10px\"/>\n                    </div>\n                    <button style=\"background: blue; padding: 10px 20px; border: none; color: #efefef\">Submit</button>\n\t\t\t    </form>\n            </div>\n\t\t\t\n\t\t");
     };
     ;
     LoginController.prototype.postLogin = function (req, res) {
